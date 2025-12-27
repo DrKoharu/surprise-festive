@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Sayang! 🎂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+        
+        * {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #fce7f3 0%, #fef3c7 50%, #e9d5ff 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(236, 72, 153, 0.15);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    
+    <!-- Animasi Intro Overlay -->
+    <div id="intro-overlay" class="fixed inset-0 bg-pink-200 z-50 flex items-center justify-center">
+        <div class="text-center">
+            <h1 id="intro-text" class="text-5xl md:text-7xl font-bold text-pink-600 opacity-0">
+                Haloo Sayang... 💕
+            </h1>
+            <p id="intro-subtext" class="text-2xl md:text-3xl text-pink-500 mt-4 opacity-0">
+                Siap-siap ya! ✨
+            </p>
+        </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div id="floating-container"></div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="opacity-0">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-4 py-20">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-6xl md:text-8xl font-bold text-pink-600 mb-6 animate-bounce">
+                    Selamat Ulang Tahun! 🎂
+                </h1>
+                <p class="text-2xl md:text-3xl text-pink-500 mb-8 leading-relaxed">
+                    Hari ini adalah hari spesialmu! 🎉<br>
+                    Semoga semua impian dan harapanmu terwujud ✨
+                </p>
+                <div class="inline-block bg-white rounded-full px-8 py-4 card-shadow">
+                    <p class="text-xl text-pink-400">Dikirim dengan penuh cinta 💖</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Card Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-3xl p-8 md:p-12 card-shadow hover-lift">
+                    <h2 class="text-4xl font-bold text-pink-600 mb-6 text-center">
+                        Ucapan Spesial 💌
+                    </h2>
+                    <p id="card-message" class="text-xl text-gray-700 text-center mb-8 leading-relaxed">
+                        Kamu adalah hadiah terindah dalam hidupku. Setiap hari bersamamu adalah berkah yang luar biasa. 
+                        Terima kasih sudah menjadi bagian dari hidupku! 🌟
+                    </p>
+                    <div class="text-center">
+                        <button id="surprise-btn" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white px-10 py-4 rounded-full text-xl font-semibold hover:scale-110 transition-transform duration-300 card-shadow">
+                            Klik untuk Kejutan! 🎁
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-5xl font-bold text-pink-600 mb-12 text-center">
+                  Selamat Ulang Tahun!
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="aspect-square bg-gradient-to-br from-pink-200 to-purple-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🎈</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-purple-200 to-pink-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🎂</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-yellow-200 to-pink-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🎉</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-pink-200 to-yellow-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">💝</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-purple-200 to-yellow-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🌟</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-yellow-200 to-purple-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🎁</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-pink-200 to-purple-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">🌈</span>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-purple-200 to-pink-200 rounded-full card-shadow hover-lift flex items-center justify-center">
+                        <span class="text-6xl">💖</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="bg-white rounded-3xl p-8 card-shadow">
+                    <p class="text-2xl text-pink-600 font-semibold mb-4">
+                        Sekali lagi, Selamat Ulang Tahun! 🎊
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        Semoga tahun ini membawa lebih banyak kebahagiaan, kesehatan, dan kesuksesan untukmu. 
+                        Kamu sangat berharga dan dicintai! 💕
+                    </p>
+                </div>
+                <p class="text-pink-400 mt-8">Dibuat dengan ❤️ khusus untukmu</p>
+            </div>
+
+            <div id="clock-date" class="text-center text-pink-500 mt-6 text-lg font-mono"></div>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
